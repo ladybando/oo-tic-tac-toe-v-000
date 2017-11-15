@@ -6,4 +6,7 @@ class TicTacToe
    puts "Welcome to TicTacToe!"
   end
 end
+
+game = TicTacToe.new
+game = board
 play(board)
