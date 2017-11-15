@@ -9,6 +9,7 @@ class TicTacToe
 
   def game
     @game = game
+  end
 end
 
 game = TicTacToe.new
