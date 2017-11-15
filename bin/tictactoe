@@ -20,6 +20,4 @@ class TicTacToe
   end
 end
 
-game = TicTacToe.new
-game = board
-play(board)
+play(@board)
