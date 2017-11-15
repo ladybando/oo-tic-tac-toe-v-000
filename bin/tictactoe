@@ -4,6 +4,7 @@ require_relative '../lib/tic_tac_toe.rb'
 class TicTacToe
   def initialize(game, board)
   @game = game
+  @board = board
   end
 end
 play(board)
