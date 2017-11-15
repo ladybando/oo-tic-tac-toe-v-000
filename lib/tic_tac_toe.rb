@@ -35,6 +35,10 @@ def position_taken?(index)
 @board[index]== "X" || @board[index] == "O"
 end
 
+  def valid_move?(index)
+    index.between?(0,8) && !position_taken?(index)
+  end
+
   def play
     while !over?
       turn
@@ -44,10 +48,6 @@ end
     elsif draw?
       puts "Cat's Game!"
     end
-  end
-
-  def valid_move?(index)
-    index.between?(0,8) && !position_taken?(index)
   end
 
   def won?
