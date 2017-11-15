@@ -44,16 +44,6 @@ def draw?
   end
 end
 
-def over?
-  if draw?
-    true
-  elsif won?
-    true
-  else
-    false
-  end
-end
-
   def input_to_index(user_input)
   user_input.to_i - 1
   end
@@ -87,13 +77,22 @@ end
   end
 end
 
+def over?
+  if draw?
+    true
+  elsif won?
+    true
+  else
+    false
+  end
+end
+
 def winner
   if won?(@board)
     return @board[won?(@board)[0]]
   else return nil
   end
 end
-
 
   def play
     while !over?
@@ -105,4 +104,3 @@ end
       puts "Cat's Game!"
     end
   end
-
