@@ -104,4 +104,3 @@ def winner
   else return nil
   end
 end
- 
