@@ -37,12 +37,6 @@ class TicTacToe
     index.between?(0,8) && !position_taken?(index)
   end
 
-  def won?
-     WIN_COMBINATIONS.detect do |win|
-       @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
-     end
-   end
-
 def full?
   @board.all?{|token| token == "X" || token == "O"}
 end
@@ -81,6 +75,12 @@ end
     end
   end
 
+  def won?
+     WIN_COMBINATIONS.detect do |win|
+       @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
+     end
+   end
+
   def position_taken?(index)
   @board[index]== "X" || @board[index] == "O"
   end
@@ -103,4 +103,3 @@ end
   @board[index] = player
   end
 end
-
