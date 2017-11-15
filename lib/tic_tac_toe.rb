@@ -81,18 +81,19 @@ end
     end
   end
 
+  def winner
+    if won?(@board)
+      return @board[won?(@board)[0]]
+    else return nil
+    end
+  end
+
   def position_taken?(index)
   @board[index]== "X" || @board[index] == "O"
   end
 
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
-  end
-  def winner
-    if won?(@board)
-      return @board[won?(@board)[0]]
-    else return nil
-    end
   end
 
   def turn_count
