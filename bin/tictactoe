@@ -6,6 +6,9 @@ class TicTacToe
    puts "Welcome to TicTacToe!"
    @game = game
   end
+
+  def game
+    @game = game
 end
 
 game = TicTacToe.new
