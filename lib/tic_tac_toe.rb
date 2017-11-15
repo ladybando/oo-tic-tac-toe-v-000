@@ -37,6 +37,34 @@ class TicTacToe
     index.between?(0,8) && !position_taken?(index)
   end
 
+  def won?
+     WIN_COMBINATIONS.detect do |win|
+       @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
+     end
+   end
+
+def full?
+  @board.all?{|token| token == "X" || token == "O"}
+end
+
+def draw?
+  if won? && full?
+    false
+  elsif full?
+    true
+  end
+end
+
+def over?
+  if draw?
+    true
+  elsif won?
+    true
+  else
+    false
+  end
+end
+
   def input_to_index(user_input)
   user_input.to_i - 1
   end
@@ -60,6 +88,12 @@ class TicTacToe
   def current_player
     turn_count % 2 == 0 ? "X" : "O"
   end
+  def winner
+    if won?(@board)
+      return @board[won?(@board)[0]]
+    else return nil
+    end
+  end
 
   def turn_count
   @board.count{|token| token == "X" || token == "O"}
@@ -70,37 +104,3 @@ class TicTacToe
   end
 end
 
-def won?
-   WIN_COMBINATIONS.detect do |win|
-     @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
-   end
- end
-
-def full?
-@board.all?{|token| token == "X" || token == "O"}
-end
-
-def draw?
-if won? && full?
-  false
-elsif full?
-  true
-end
-end
-
-def over?
-if draw?
-  true
-elsif won?
-  true
-else
-  false
-end
-end
-
-def winner
-  if won?(@board)
-    return @board[won?(@board)[0]]
-  else return nil
-  end
-end
