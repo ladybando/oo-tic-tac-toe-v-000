@@ -98,9 +98,9 @@ end
   end
 end
 
-def winner(board)
-  if won?(board)
-    return board[won?(board)[0]]
-  else return nil
+def winner
+  combo = won?
+  if combo
+    @board[combo.first]
   end
 end
