@@ -52,6 +52,35 @@ end
          @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
        end
      end
+     
+     def full?
+       @board.all?{|token| token == "X" || token == "O"}
+     end
+
+     def draw?
+       if won? && full?
+         false
+       elsif full?
+         true
+       end
+     end
+
+     def winner
+       combo = won?
+       if combo
+         @board[combo.first]
+       end
+     end
+
+     def over?
+       if draw?
+         true
+       elsif won?
+         true
+       else
+         false
+       end
+     end
 
   def play
     while !over?
@@ -63,35 +92,6 @@ end
       puts "Cat's Game!"
     end
   end
-
-def full?
-  @board.all?{|token| token == "X" || token == "O"}
-end
-
-def draw?
-  if won? && full?
-    false
-  elsif full?
-    true
-  end
-end
-
-def winner
-  combo = won?
-  if combo
-    @board[combo.first]
-  end
-end
-
-def over?
-  if draw?
-    true
-  elsif won?
-    true
-  else
-    false
-  end
-end
 
   def turn
     puts "Please enter 1-9:"
