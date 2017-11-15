@@ -47,12 +47,24 @@ end
       turn_count % 2 == 0 ? "X" : "O"
     end
 
+    def turn
+      puts "Please enter 1-9:"
+      user_input = gets.strip
+      index = input_to_index(user_input)
+      if valid_move?(index)
+        move(index, current_player)
+        display_board
+      else
+        turn
+      end
+    end
+
     def won?
        WIN_COMBINATIONS.detect do |win|
          @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
        end
      end
-     
+
      def full?
        @board.all?{|token| token == "X" || token == "O"}
      end
@@ -90,17 +102,5 @@ end
       puts "Congratulations #{winner}!"
     elsif draw?
       puts "Cat's Game!"
-    end
-  end
-
-  def turn
-    puts "Please enter 1-9:"
-    user_input = gets.strip
-    index = input_to_index(user_input)
-    if valid_move?(index)
-      move(index, current_player)
-      display_board
-    else
-      turn
     end
   end
