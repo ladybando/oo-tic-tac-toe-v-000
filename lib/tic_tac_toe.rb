@@ -22,6 +22,11 @@ class TicTacToe
     puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
   end
 
+  def input_to_index(user_input)
+  user_input.to_i - 1
+  end
+
+
   def play
     while !over?
       turn
@@ -64,10 +69,6 @@ def over?
     false
   end
 end
-
-  def input_to_index(user_input)
-  user_input.to_i - 1
-  end
 
   def turn
     puts "Please enter 1-9:"
