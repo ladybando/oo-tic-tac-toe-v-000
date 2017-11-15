@@ -26,6 +26,11 @@ class TicTacToe
   user_input.to_i - 1
   end
 
+  def move(index,player)
+  @board[index] = player
+  end
+end
+
   def play
     while !over?
       turn
@@ -92,11 +97,6 @@ end
   def turn_count
   @board.count{|token| token == "X" || token == "O"}
   end
-
-  def move(index,player)
-  @board[index] = player
-  end
-end
 
 def winner
   combo = won?
