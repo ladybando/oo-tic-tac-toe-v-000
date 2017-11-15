@@ -31,6 +31,10 @@ class TicTacToe
   end
 end
 
+def position_taken?(index)
+@board[index]== "X" || @board[index] == "O"
+end
+
   def play
     while !over?
       turn
@@ -84,10 +88,6 @@ end
     else
       turn
     end
-  end
-
-  def position_taken?(index)
-  @board[index]== "X" || @board[index] == "O"
   end
 
   def current_player
