@@ -46,7 +46,7 @@ end
     def current_player
       turn_count % 2 == 0 ? "X" : "O"
     end
-    
+
     def won?
        WIN_COMBINATIONS.detect do |win|
          @board[win[0]] == @board[win[1]] && @board[win[1]] == @board[win[2]] && position_taken?(win[0])
@@ -76,6 +76,13 @@ def draw?
   end
 end
 
+def winner
+  combo = won?
+  if combo
+    @board[combo.first]
+  end
+end
+
 def over?
   if draw?
     true
@@ -97,11 +104,3 @@ end
       turn
     end
   end
-
-
-def winner
-  combo = won?
-  if combo
-    @board[combo.first]
-  end
-end
